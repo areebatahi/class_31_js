@@ -41,6 +41,21 @@ function getLocalData() {
 }
 getLocalData()
 
-function logOut() {
+function redirect() {
     window.location.href = "./index.html"
+}
+
+function login(){
+    var email = document.getElementById('email');
+    var password = document.getElementById('password');
+    var getData = localStorage.getItem("userData");
+    var parseData = JSON.parse(getData);
+    console.log(parseData);
+
+    if(parseData.email !== email){
+        alert('Invalid Email');
+    }else if(parseData.password !== parseData){
+        alert('Invalid Email');
+    }
+
 }
