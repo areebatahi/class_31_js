@@ -1,4 +1,3 @@
-
 function registration() {
     event.preventDefault()
     var name = document.getElementById('name');
@@ -33,7 +32,7 @@ function registration() {
             });
             setTimeout(() => {
                 window.location.href = "./dashboard.html"
-            }, 2000); 
+            }, 2000);z 
         } else {
             Swal.fire({
                 icon: "error",
