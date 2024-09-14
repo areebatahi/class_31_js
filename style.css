@@ -1,0 +1,109 @@
+#hidden,
+#hiddenbtn,
+.hiddenbtn {
+    display: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20221231/pngtree-background-with-purple-theme-and-hexagons-image_1537776.jpg');
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.containerCard {
+    display: flex;
+    justify-content: space-around;
+}
+
+.card {
+    border: 2px #dba8ff double;
+    background-color: #e1d3ff;
+    /* text-align: center; */
+    color: #ab3cfc;
+}
+
+.input {
+    outline: none;
+    border: 1px #ab3cfc solid;
+    border-radius: 4px;
+}
+
+.input:focus{
+    box-shadow: none;
+    border: 1px #cb83ff solid;
+}
+.btn {
+    background-color: #ab3cfc;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #9f18ff;
+    color: white;
+}
+
+.form-check-input {
+    border: 1px #ab3cfc solid;
+}
+
+.form-check-input:checked {
+    border: 1px #ab3cfc solid;
+    background-color: #ab3cfc;
+    box-shadow: 1px 1px 5px #ab3cfc;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 1px #ab3cfc solid;
+    background-color: #e6dcff;
+    border-radius: 4px;
+}
+
+.quizbtn {
+    width: fit-content;
+}
+
+.optionDiv {
+    border: 1px #ab3cfc solid;
+    background-color: #e6dcff;
+    border-radius: 4px;
+}
+
+.btnDiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+.color {
+    color: #fff;
+}
+
+.anchor {
+    text-decoration: none;
+    color: #ab3cfc;
+}
+
+.anchor:hover {
+    border-bottom: 2px #ab3cfc solid;
+}
+
+.d-flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #5c009d;
+    width: 100vw;
+}
+
+.signup {
+    font-size: small;
+}

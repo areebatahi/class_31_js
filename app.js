@@ -12,7 +12,7 @@ function registration() {
     if (password.value !== cpassword.value) {
         Swal.fire({
             icon: "error",
-            title: "Oops...",
+            // title: "Oops...",
             text: "password should be same!",
             footer: '<a href="#">Why do I have this issue?</a>'
         });
@@ -23,16 +23,25 @@ function registration() {
         At least one special character i.e. [‘@’, ‘$’, ‘.’, ‘#’, ‘!’, ‘%’, ‘*’, ‘?’, ‘&’, ‘^’]
         Also, the total length must be in the range [8-15]`);
     } else {
-        Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Registration Successfully",
-            showConfirmButton: false,
-            timer: 1500
-        });
-        setTimeout(() => {
-            window.location.href = "./dashboard.html"
-        }, 2000);
+        if (phoneNumber.value.length == 11) {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Registration Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            setTimeout(() => {
+                window.location.href = "./dashboard.html"
+            }, 2000); 
+        } else {
+            Swal.fire({
+                icon: "error",
+                // title: "Oops...",
+                text: "Phone Number must contain 11 digits",
+                footer: '<a href="#">Why do I have this issue?</a>'
+            });
+        }
     }
 
     var userData = {
@@ -57,11 +66,7 @@ function getLocalData() {
     var parseData = JSON.parse(getData);
     console.log(parseData)
     getLocalDataDiv.innerHTML = `
-    <ul>
-      <li>Name: ${parseData.name} </li>
-      <li>Email: ${parseData.email} </li>
-      <li>Phone Number: ${parseData.phoneNumber} </li>
-    </ul>
+
     `
 }
 getLocalData()
@@ -101,5 +106,4 @@ function login() {
         });
         window.location.href = "./dashboard.html"
     }
-
 }
