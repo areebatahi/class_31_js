@@ -83,26 +83,17 @@ var question = [
     },
 ];
 
-var userName = document.getElementById('userName');
-
-
 function showContainer() {
     var hidden = document.getElementById("hidden");
-    if (userName.value === "") {
-        Swal.fire({
-            title: "Empty Feild",
-            text: "Please enter your name",
-            icon: "question"
-        });
-    } else {
-        document.getElementById('card').style.display = "none";
-        Swal.fire({
-            title: `Good Luck`,
-            text: `Total questions are 10`,
-        });
-        hidden.style.display = "block";
-    }
+
+    document.getElementById('card').style.display = "none";
+    Swal.fire({
+        title: `Good Luck`,
+        text: `Total questions are 10`,
+    });
+    hidden.style.display = "block";
 }
+
 var index = 0;
 var result = 0;
 
@@ -122,23 +113,21 @@ function renderQues() {
     }
 
     if (!question[index]) {
-        var userName = document.getElementById('userName');
         if (result <= 5) {
             Swal.fire({
                 title: `Failed`,
-                text: `${userName.value}! Your sorce is ${result}`,
+                text: `Oops! Your sorce is ${result}`,
                 icon: "error"
             });
         } else {
             Swal.fire({
                 title: `Passed`,
-                text: `${userName.value}! Your sorce is ${result}`,
+                text: `Congratulation! Your sorce is ${result}`,
                 icon: "success"
             });
         }
         document.getElementById('card').style.display = "block";
         hidden.style.display = "none";
-        userName.value = ""
         if (index !== 0) {
             index = 0;
             console.log(index)
@@ -193,4 +182,3 @@ function showBtn() {
 function showPerBtn() {
     document.getElementById('backBtn').style.display = "block"
 }
-

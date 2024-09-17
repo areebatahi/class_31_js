@@ -76,6 +76,7 @@ body {
     border: 1px #ab3cfc solid;
     background-color: #e6dcff;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 .btnDiv {
@@ -106,4 +107,7 @@ body {
 
 .signup {
     font-size: small;
+}
+#opt1{
+    cursor: pointer;
 }

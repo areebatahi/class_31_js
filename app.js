@@ -32,7 +32,7 @@ function registration() {
             });
             setTimeout(() => {
                 window.location.href = "./dashboard.html"
-            }, 2000);z 
+            }, 2000); z
         } else {
             Swal.fire({
                 icon: "error",
