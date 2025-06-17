@@ -83,19 +83,25 @@ var question = [
     },
 ];
 
-function showContainer() {
-    var hidden = document.getElementById("hidden");
-
-    document.getElementById('card').style.display = "none";
-    Swal.fire({
-        title: `Good Luck`,
-        text: `Total questions are 10`,
-    });
-    hidden.style.display = "block";
-}
-
 var index = 0;
 var result = 0;
+
+function showContainer() {
+    var hidden = document.getElementById("hidden");
+    document.getElementById('card').classList.add('hidden');
+   Swal.fire({
+  title: "🎯 Let's Begin!",
+  html: `<b>Total Questions:</b> ${question.length}<br><small>Answer wisely! 😎</small>`,
+  icon: "info",
+  confirmButtonText: "Start Quiz",
+  confirmButtonColor: "#00c9ff",
+  background: "#1f2937",
+  color: "#fff",
+});
+
+    hidden.style.display = "block";
+    renderQues();
+}
 
 function renderQues() {
     var container = document.getElementById('container');
@@ -104,81 +110,65 @@ function renderQues() {
 
     for (var i = 0; i < option.length; i++) {
         if (option[i].checked) {
-
             if (question[index - 1].ans === option[i].value) {
-                result++
+                result++;
             }
-            console.log(option[i].value, question[index - 1].ans)
         }
     }
 
-    if (!question[index]) {
+    if (index >= question.length) {
         if (result <= 5) {
             Swal.fire({
-                title: `Failed`,
-                text: `Oops! Your sorce is ${result}`,
-                icon: "error"
-            });
+  title: "😢 Oops, You Failed!",
+  text: `Your score is ${result}. Better luck next time!`,
+  icon: "error",
+  confirmButtonText: "Try Again",
+  confirmButtonColor: "#ff416c",
+  background: "#1f2937",
+  color: "#fff",
+});
+
         } else {
             Swal.fire({
-                title: `Passed`,
-                text: `Congratulation! Your sorce is ${result}`,
-                icon: "success"
-            });
+  title: "🎉 Congratulations!",
+  text: `You passed the quiz with a score of ${result}!`,
+  icon: "success",
+  confirmButtonText: "Awesome!",
+  confirmButtonColor: "#00c9ff",
+  background: "#1f2937",
+  color: "#fff",
+});
+
         }
-        document.getElementById('card').style.display = "block";
         hidden.style.display = "none";
-        if (index !== 0) {
-            index = 0;
-            console.log(index)
-        }
+        index = 0;
+        result = 0;
         return;
-    } else {
-        container.innerHTML = `
-        <p class="question">${index + 1}. ${question[index].question}</p><hr>
-        <div class="optionDiv p-2 m-1"><label for="opt1"><input type="radio" name="option" value="${question[index].opt1}" onclick="showBtn()" id="opt1" class="form-check-input">  ${question[index].opt1}</label></div>
-        <div class="optionDiv p-2 m-1"><label for="opt2"><input type="radio" name="option" value="${question[index].opt2}" onclick="showBtn()" id="opt2" class="form-check-input">  ${question[index].opt2}</label></div>
-        <div class="optionDiv p-2 m-1"><label for="opt3"><input type="radio" name="option" value="${question[index].opt3}" onclick="showBtn()" id="opt3" class="form-check-input">  ${question[index].opt3}</label></div>
-        <div class="optionDiv p-2 m-1"><label for="opt4"><input type="radio" name="option" value="${question[index].opt4}" onclick="showBtn()" id="opt4" class="form-check-input">  ${question[index].opt4}</label></div><br>
-        <div class="btnDiv">
-        <button id="backBtn" class="btn quizbtn hiddenbtn">Back</button>
-        <button onclick="renderQues(); showPerBtn()" id="hiddenbtn" class="btn quizbtn">Next</button>
-        </div>`
-
-
-        if (true) {
-            document.getElementById('backBtn').addEventListener("click", function () {
-                index--
-                container.innerHTML = `
-            <p class="question">${index}. ${question[index - 1].question}</p><hr>
-            <div class="optionDiv p-2 m-1"><label for="opt1"><input type="radio" name="option" value="${question[index - 1].opt1}" onclick="showBtn()" id="opt1" class="form-check-input">  ${question[index - 1].opt1}</label></div>
-            <div class="optionDiv p-2 m-1"><label for="opt2"><input type="radio" name="option" value="${question[index - 1].opt2}" onclick="showBtn()" id="opt2" class="form-check-input">  ${question[index - 1].opt2}</label></div>
-            <div class="optionDiv p-2 m-1"><label for="opt3"><input type="radio" name="option" value="${question[index - 1].opt3}" onclick="showBtn()" id="opt3" class="form-check-input">  ${question[index - 1].opt3}</label></div>
-            <div class="optionDiv p-2 m-1"><label for="opt4"><input type="radio" name="option" value="${question[index - 1].opt4}" onclick="showBtn()" id="opt4" class="form-check-input">  ${question[index - 1].opt4}</label></div><br>
-            <div class="btnDiv">
-            <button id="backBtn" class="btn quizbtn hiddenbtn">Back</button>
-            <button onclick="renderQues(); showPerBtn()" id="hiddenbtn" class="btn quizbtn">Next</button>
-            </div>`
-                index = index++
-                return
-            })
-            index++
-        }
-
-
-
     }
+
+    container.innerHTML = `
+        <p class="question">${index + 1}. ${question[index].question}</p><hr>
+        <div class="optionDiv p-2 m-1"><label><input type="radio" name="option" value="${question[index].opt1}" onclick="showBtn()" class="form-check-input"> ${question[index].opt1}</label></div>
+        <div class="optionDiv p-2 m-1"><label><input type="radio" name="option" value="${question[index].opt2}" onclick="showBtn()" class="form-check-input"> ${question[index].opt2}</label></div>
+        <div class="optionDiv p-2 m-1"><label><input type="radio" name="option" value="${question[index].opt3}" onclick="showBtn()" class="form-check-input"> ${question[index].opt3}</label></div>
+        <div class="optionDiv p-2 m-1"><label><input type="radio" name="option" value="${question[index].opt4}" onclick="showBtn()" class="form-check-input"> ${question[index].opt4}</label></div><br>
+        <div class="btnDiv">
+            ${index > 0 ? '<button onclick="goBack()" class="btn quizbtn hiddenbtn">Back</button>' : ''}
+            <button onclick="nextQues()" id="hiddenbtn" class="btn quizbtn" style="display:none;">Next</button>
+        </div>`;
 }
-renderQues()
-document.getElementById('backBtn').addEventListener('click', function () {
-    index--
-})
+
+function nextQues() {
+    index++;
+    renderQues();
+}
+
+function goBack() {
+    index--;
+    renderQues();
+}
 
 function showBtn() {
     var hiddenbtn = document.getElementById('hiddenbtn');
-    hiddenbtn.style.display = "block"
-}
-
-function showPerBtn() {
-    document.getElementById('backBtn').style.display = "block"
+    if (hiddenbtn) hiddenbtn.style.display = "inline-block";
 }
